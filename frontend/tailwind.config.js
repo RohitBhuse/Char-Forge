@@ -1,0 +1,73 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "secondary-fixed-dim": "#8ad3d7",
+        "secondary-container": "#005f63",
+        "on-primary-fixed": "#002111",
+        "on-tertiary-fixed": "#00201c",
+        "surface-tint": "#59de9b",
+        "tertiary-fixed": "#62fae3",
+        "surface-container-highest": "#2f3633",
+        "secondary-fixed": "#a6eff3",
+        "surface-dim": "#0e1512",
+        "outline": "#869489",
+        "surface-container-lowest": "#09100d",
+        "on-primary-fixed-variant": "#005232",
+        "inverse-primary": "#006d43",
+        "on-error": "#690005",
+        "tertiary-container": "#00a594",
+        "on-secondary": "#003739",
+        "tertiary": "#3cddc7",
+        "error-container": "#93000a",
+        "on-surface-variant": "#bccabe",
+        "on-error-container": "#ffdad6",
+        "inverse-surface": "#dde4df",
+        "primary": "#59de9b",
+        "on-secondary-fixed": "#002021",
+        "on-background": "#dde4df",
+        "surface-container-low": "#161d1a",
+        "on-secondary-container": "#8dd6da",
+        "outline-variant": "#3d4a41",
+        "background": "#0e1512",
+        "tertiary-fixed-dim": "#3cddc7",
+        "on-tertiary-container": "#00322c",
+        "on-surface": "#dde4df",
+        "primary-fixed": "#78fbb6",
+        "on-secondary-fixed-variant": "#004f53",
+        "surface-container-high": "#242c28",
+        "error": "#ffb4ab",
+        "on-tertiary-fixed-variant": "#005047",
+        "on-tertiary": "#003731",
+        "surface": "#0e1512",
+        "primary-fixed-dim": "#59de9b",
+        "secondary": "#8ad3d7",
+        "primary-container": "#00a86b",
+        "surface-variant": "#2f3633",
+        "on-primary": "#003921",
+        "on-primary-container": "#00331d",
+        "surface-container": "#1a211e",
+        "surface-bright": "#333b37",
+        "inverse-on-surface": "#2b322e"
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      fontFamily: {
+        "headline": ["Space Grotesk"],
+        "body": ["Manrope"],
+        "label": ["Space Grotesk"]
+      }
+    },
+  },
+  plugins: [],
+}
