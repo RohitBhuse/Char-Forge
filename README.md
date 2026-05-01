@@ -79,8 +79,6 @@ Char_Forge_App/
 -   Database access is protected via a dedicated schema (`charforge_schema`).
 -   Sensitive data is managed exclusively through environment variables.
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request or open an issue for any bugs or feature requests.
 
 
