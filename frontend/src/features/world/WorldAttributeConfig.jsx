@@ -36,7 +36,7 @@ function WorldAttributeConfig({ world, universeId, onComplete }) {
   const handleSave = async () => {
     setIsSubmitting(true);
     try {
-      const finalSchema = [...selectedAttributes, ...customAttributes];
+      const finalSchema = [...selectedAttributes.map(a => a.toLowerCase()), ...customAttributes];
       await api.post(`/universes/${universeId}/worlds/${world.world_id}/add_attribute_list`, {
         attribute_list: finalSchema.join(',')
       });

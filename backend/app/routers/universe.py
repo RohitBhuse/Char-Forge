@@ -15,7 +15,19 @@ def get_universe_tree(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    return db.query(Universe).filter(Universe.user_id == current_user.user_id).all()
+    universes = db.query(Universe).filter(Universe.user_id == current_user.user_id).all()
+    
+    # Populate legacy attribute_list for frontend compatibility
+    for univ in universes:
+        for world in univ.worlds:
+            if world.attributes and "tags" in world.attributes:
+                # Our new storage pattern uses a 'tags' key for the list of strings
+                world.attribute_list = ",".join(world.attributes["tags"])
+            elif world.attributes:
+                # Fallback for other potential JSON structures
+                world.attribute_list = ",".join(world.attributes.keys())
+                
+    return universes
 
 @router.get("/stats")
 def get_stats(

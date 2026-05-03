@@ -31,7 +31,7 @@ function WorldRow({ world, onDelete }) {
       </div>
       {expanded && (
         <div className="px-5 pb-4 border-t border-outline-variant/10 pt-3 space-y-2 animate-in fade-in duration-200">
-          {world.world_description && <p className="text-on-surface-variant text-xs leading-relaxed">{world.world_description}</p>}
+          {world.world_description && <p className="text-on-surface-variant text-xs leading-relaxed break-words">{world.world_description}</p>}
           {world.world_timeline && (
             <div className="flex items-start gap-2 mt-2">
               <span className="w-3 h-px bg-primary/60 mt-1.5 shrink-0" />

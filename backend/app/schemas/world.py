@@ -9,22 +9,24 @@ class WorldBase(BaseModel):
 
 class WorldCreate(WorldBase):
     world_timeline: Optional[str] = None
-    attribute_list: Optional[str] = None
+    attributes: Optional[dict] = None
 
 class WorldUpdate(BaseModel):
     world_name: Optional[str] = None
     world_description: Optional[str] = None
     world_timeline: Optional[str] = None
-    attribute_list: Optional[str] = None
+    attributes: Optional[dict] = None
 
 class WorldAttributeUpdate(BaseModel):
-    attribute_list: str
+    attributes: Optional[dict] = None
+    attribute_list: Optional[str] = None # Legacy support
 
 class World(WorldBase):
     world_id: int
     user_id: UUID
     world_timeline: Optional[date] = None
-    attribute_list: Optional[str] = None
+    attributes: Optional[dict] = None
+    attribute_list: Optional[str] = None # Legacy support
     created_at: datetime
 
     class Config:

@@ -13,7 +13,7 @@ class World(Base):
     world_name = Column(String, nullable=False)
     world_description = Column(String)
     world_timeline = Column(Date)
-    attribute_list = Column(String) # Comma-separated list of attributes
+    attributes = Column(JSONB, default={}) # Flexible world-specific attributes
     created_at = Column(DateTime, default=func.now(), nullable=False)
 
     user = relationship("User")

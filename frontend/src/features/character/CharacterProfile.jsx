@@ -128,8 +128,8 @@ const CharacterProfile = ({ character, onBack, userData, onLogout, onOpenSetting
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0e1512] via-transparent to-transparent opacity-80"></div>
               <div className="absolute bottom-8 left-8 right-8">
-                <h2 className="text-5xl font-bold font-headline text-white leading-tight uppercase tracking-tighter">{character.character_name}</h2>
-                <p className="text-[#59de9b] font-headline uppercase tracking-[0.3em] text-sm mt-2">{character.tags || 'Persona of the Weaver'}</p>
+                <h2 className="text-5xl font-bold font-headline text-white leading-tight uppercase tracking-tighter break-words">{character.character_name}</h2>
+                <p className="text-[#59de9b] font-headline uppercase tracking-[0.3em] text-sm mt-2 break-words">{character.tags || 'Persona of the Weaver'}</p>
               </div>
             </div>
 
@@ -161,9 +161,9 @@ const CharacterProfile = ({ character, onBack, userData, onLogout, onOpenSetting
                 .map(([key, value]) => {
                   const formatLabel = (str) => str.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
                   return (
-                    <div key={key} className="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary transition-all hover:bg-surface-container-high">
+                    <div key={key} className="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary transition-all hover:bg-surface-container-high overflow-hidden">
                       <p className="text-outline text-xs uppercase tracking-widest font-headline mb-4">{formatLabel(key)}</p>
-                      <p className="text-on-surface font-body text-sm leading-loose opacity-90 whitespace-pre-wrap">
+                      <p className="text-on-surface font-body text-sm leading-loose opacity-90 whitespace-pre-wrap break-words">
                         {value}
                       </p>
                     </div>

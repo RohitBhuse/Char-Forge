@@ -58,10 +58,13 @@ const ProfileSettingsPanel = ({ onClose, userName, userEmail, onLogout, selected
     }).catch(console.error);
     
     if (selectedWorld && selectedWorld.attribute_list) {
-      const attrs = selectedWorld.attribute_list.split(',').filter(Boolean);
-      const defaults = attrs.filter(a => DEFAULT_ATTRIBUTES.some(d => d.id === a));
-      const customs = attrs.filter(a => !DEFAULT_ATTRIBUTES.some(d => d.id === a));
-      setWorldAttributes(defaults);
+      const attrs = selectedWorld.attribute_list.split(',').filter(Boolean).map(a => a.trim());
+      // Case-insensitive check against DEFAULT_ATTRIBUTES
+      const defaults = attrs.filter(a => DEFAULT_ATTRIBUTES.some(d => d.id.toLowerCase() === a.toLowerCase()));
+      const customs = attrs.filter(a => !DEFAULT_ATTRIBUTES.some(d => d.id.toLowerCase() === a.toLowerCase()));
+      
+      // Map back to lowercase IDs for consistent internal state
+      setWorldAttributes(defaults.map(a => a.toLowerCase()));
       setCustomWorldAttributes(customs);
     }
   }, [selectedWorld]);

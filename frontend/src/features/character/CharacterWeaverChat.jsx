@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { api } from '../../services/api';
 
-function CharacterWeaverChat({ universeId, worldId, worldName, onClose }) {
+function CharacterWeaverChat({ universeId, worldId, worldName }) {
   const [chatMessages, setChatMessages] = useState([
     { role: 'assistant', content: `What soul shall we breathe life into within "${worldName}"?` }
   ]);
@@ -33,44 +33,38 @@ function CharacterWeaverChat({ universeId, worldId, worldName, onClose }) {
   };
 
   return (
-    <div className="bg-surface-container-high rounded-xl flex flex-col h-full border border-primary/20 shadow-[0px_24px_48px_rgba(0,57,33,0.1)] overflow-hidden animate-in fade-in zoom-in-95 duration-300">
-      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
-      <div className="flex items-center justify-between px-6 py-4 shrink-0 relative z-10">
-        <div className="flex items-center gap-2">
-          <span className="w-4 h-px bg-primary" />
-          <span className="font-label uppercase tracking-widest text-[0.6rem] text-primary">Character Weaver</span>
-        </div>
-        <button
-          onClick={onClose}
-          className="p-2 rounded-full hover:bg-surface-container-highest text-on-surface-variant transition-all hover:rotate-90 active:scale-90"
-        >
-          <span className="material-symbols-outlined text-sm">close</span>
-        </button>
+    <div className="flex flex-col h-full relative">
+      <div className="flex items-center gap-2 mb-6 shrink-0 relative z-10">
+        <span className="w-4 h-px bg-primary" />
+        <span className="font-label uppercase tracking-widest text-[0.6rem] text-primary">Character Weaver</span>
       </div>
 
-      <div ref={scrollRef} className="flex-grow overflow-y-auto px-6 space-y-3 mb-4 pr-5 scroll-smooth custom-scrollbar min-h-0">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto space-y-4 pr-4 scroll-smooth custom-scrollbar min-h-0 flex flex-col">
+        {/* Spacer to push content to bottom */}
+        <div className="flex-1 min-h-0" />
+
         {chatMessages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[90%] p-3 rounded-lg text-xs leading-relaxed ${msg.role === 'user' ? 'bg-primary/10 border border-primary/20 text-on-surface' : 'bg-surface-container-highest text-on-surface-variant'}`}>
+            <div className={`max-w-[90%] p-4 rounded-2xl text-xs leading-relaxed ${msg.role === 'user' ? 'bg-primary text-on-primary' : 'bg-surface-container-high text-on-surface'}`}>
               {msg.content}
             </div>
           </div>
         ))}
         {isSending && (
           <div className="flex justify-start">
-            <div className="bg-surface-container-highest text-on-surface-variant p-3 rounded-lg text-xs animate-pulse">Processing persona intent...</div>
+            <div className="bg-surface-container-high text-on-surface p-4 rounded-2xl text-xs animate-pulse">Breathing life into persona...</div>
           </div>
         )}
       </div>
 
-      <form onSubmit={handleSend} className="relative mx-6 mb-6 shrink-0">
+      <form onSubmit={handleSend} className="relative mt-auto pt-4 border-t border-outline-variant/10 shrink-0">
         <input
-          className="w-full bg-surface-container-highest border-none focus:ring-0 text-on-surface placeholder:text-on-surface-variant/30 px-4 py-3.5 rounded-sm text-sm focus:shadow-[inset_0_-1px_0_0_#59de9b] transition-all"
-          placeholder="Describe this character..."
+          className="w-full bg-surface-container border border-outline-variant/20 focus:border-primary/50 focus:ring-0 text-on-surface placeholder:text-on-surface-variant/30 px-5 py-4 rounded-xl text-sm focus:shadow-none transition-all"
+          placeholder="Describe this persona..."
           value={chatInput}
           onChange={(e) => setChatInput(e.target.value)}
         />
-        <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-primary hover:text-primary-container transition-colors">
+        <button type="submit" className="absolute right-4 top-[calc(50%+8px)] -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-primary text-on-primary rounded-lg hover:bg-primary-container transition-colors shadow-lg shadow-primary/20">
           <span className="material-symbols-outlined text-sm">send</span>
         </button>
       </form>

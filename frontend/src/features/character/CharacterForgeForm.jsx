@@ -40,7 +40,7 @@ function CharacterForgeForm({ universeId, worldId, characterSchema = [], onChara
         resetAttrs[attr] = '';
       });
       setAttributes(resetAttrs);
-      
+
       if (onCharacterForged) onCharacterForged();
     } catch (e) {
       console.error('Failed to forge character:', e);

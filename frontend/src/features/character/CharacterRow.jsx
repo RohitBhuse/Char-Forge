@@ -38,19 +38,19 @@ function CharacterRow({ character, onDelete, onViewProfile }) {
           {(character.character_attribute?.appearance || character.appearance) && (
             <div>
               <p className="text-primary text-[10px] font-label uppercase tracking-widest mb-1">Appearance</p>
-              <p className="text-on-surface-variant text-xs leading-relaxed">{character.character_attribute?.appearance || character.appearance}</p>
+              <p className="text-on-surface-variant text-xs leading-relaxed break-words">{character.character_attribute?.appearance || character.appearance}</p>
             </div>
           )}
           {(character.character_attribute?.strengths || character.strength_and_interests) && (
             <div>
               <p className="text-primary text-[10px] font-label uppercase tracking-widest mb-1">Strengths & Interests</p>
-              <p className="text-on-surface-variant text-xs leading-relaxed">{character.character_attribute?.strengths || character.strength_and_interests}</p>
+              <p className="text-on-surface-variant text-xs leading-relaxed break-words">{character.character_attribute?.strengths || character.strength_and_interests}</p>
             </div>
           )}
           {(character.character_attribute?.background_story || character.backstory) && (
             <div>
               <p className="text-primary text-[10px] font-label uppercase tracking-widest mb-1">Backstory</p>
-              <p className="text-on-surface-variant text-xs leading-relaxed">{character.character_attribute?.background_story || character.backstory}</p>
+              <p className="text-on-surface-variant text-xs leading-relaxed break-words">{character.character_attribute?.background_story || character.backstory}</p>
             </div>
           )}
         </div>

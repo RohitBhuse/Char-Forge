@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str = os.getenv("POSTGRES_USER", "postgres")
     POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD")
     POSTGRES_DB: str = os.getenv("POSTGRES_DB", "char_forge_db")
-    POSTGRES_PORT: int = int(os.getenv("POSTGRES_PORT", 5432))
+    POSTGRES_PORT: int = int(os.getenv("POSTGRES_PORT", 5433))
     DATABASE_URL: Optional[str] = os.getenv("DATABASE_URL")
 
     @field_validator("DATABASE_URL", mode="before")
